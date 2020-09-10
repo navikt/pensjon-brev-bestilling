@@ -24,11 +24,10 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>/api/pensjon-ws-api.json</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/api/pensjon-ws-api.json</inputSpec>
                             <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                             <generatorName>spring</generatorName>
                             <configOptions>
-                                <library>spring-boot</library>
                                 <delegatePattern>true</delegatePattern>
                                 <basePackage>${openapi.package}</basePackage>
                                 <modelPackage>${openapi.package}.model</modelPackage>
