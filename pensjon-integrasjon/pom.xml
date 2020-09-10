@@ -25,14 +25,15 @@
                         </goals>
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/api/pensjon-ws-api.json</inputSpec>
-                            <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
-                            <generatorName>spring</generatorName>
+							<generatorName>kotlin</generatorName>
                             <configOptions>
-                                <delegatePattern>true</delegatePattern>
+                                <generateModels>true</generateModels>
+                                <generateApis>false</generateApis>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateModelDocumentation>false</generateModelDocumentation>
+                                <generateApiDocumentation>false</generateApiDocumentation>
                                 <basePackage>${openapi.package}</basePackage>
                                 <modelPackage>${openapi.package}.model</modelPackage>
-                                <apiPackage>${openapi.package}.api</apiPackage>
-                                <configPackage>${openapi.package}.configuration</configPackage>
                                 <title>${project.name}</title>
                             </configOptions>
                         </configuration>
