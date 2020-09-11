@@ -5,3 +5,4 @@ target
 *.project
 *.gitignore
 brev-bestilling-boot/.settings/
+pensjon-integrasjon/.settings/
