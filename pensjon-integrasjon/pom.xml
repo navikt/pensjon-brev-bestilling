@@ -9,6 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <openapi.package>no.nav.pensjon-integrasjon</openapi.package>
+        <openapi.generator.maven.plugin.generateApis>false</openapi.generator.maven.plugin.generateApis>
+        <openapi.generator.maven.plugin.generateSupportingFiles>false</openapi.generator.maven.plugin.generateSupportingFiles>
+        <openapi.generator.maven.plugin.generateModelDocumentation>false</openapi.generator.maven.plugin.generateModelDocumentation>
+        <openapi.generator.maven.plugin.generateApiDocumentation>false</openapi.generator.maven.plugin.generateApiDocumentation>
     </properties>
 
     <build>
