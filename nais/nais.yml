@@ -6,4 +6,4 @@ metadata:
   labels:
     team: pensjonsbrev
 spec:
-  image: navikt/docker-image:docker-tag
+  image: {{image}}
