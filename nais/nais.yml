@@ -1,0 +1,9 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: pensjon-brev-bestilling
+  namespace: pensjonsbrev
+  labels:
+    team: pensjonsbrev
+spec:
+  image: navikt/docker-image:docker-tag
