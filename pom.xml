@@ -15,6 +15,7 @@
 	<modules>
 		<module>pensjon-integrasjon</module>
 		<module>brev-bestilling-boot</module>
+		<module>prepare-brevdata-grunnlag</module>
 	</modules>
 	
 </project>
