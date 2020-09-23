@@ -7,3 +7,6 @@ metadata:
     team: pensjonsbrev
 spec:
   image: {{image}}
+  accessPolicy: 
+    external:
+        - host: api-gw-t4.adeo.no
