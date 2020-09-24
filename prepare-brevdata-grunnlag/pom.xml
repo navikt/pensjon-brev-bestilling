@@ -6,11 +6,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>no.nav.pensjon-brev-bestilling</groupId>
-	<artifactId>brev-bestilling-boot</artifactId>
+	<artifactId>prepare-brevdata-grunnlag</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>brev bestilling tjeneste</name>
+	<name>Samler brevdata fra forskjelige kilder på veien av brev bestillingen. </name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
