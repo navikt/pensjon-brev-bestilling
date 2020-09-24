@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Brevbestilling API
+  description: API that describes brevbestilling
+
+paths:
+  /brevbestilling:
+    post:
+      description: Service for brevbestilling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'brevbestilling-models.yaml#/components/schemas/brevbestillingRequest'
+      responses:
+        '200':
+          description: Successful response
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
