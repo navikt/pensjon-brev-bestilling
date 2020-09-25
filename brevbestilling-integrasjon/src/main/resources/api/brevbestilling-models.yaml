@@ -1,0 +1,63 @@
+components:
+  schemas:
+    brevbestillingRequest:
+      type: object
+      required:
+        - brevKode
+        - sensitivt
+        - adresseringsInformasjon
+        - sak
+      properties:
+        brevKode:
+          type: string
+        sprak:
+          $ref: '#/components/schemas/sprak'
+        sensitivt:
+          type: boolean
+        kravId:
+          type: string
+        vedtakId:
+          type: string
+        adresseringsInformasjon:
+          $ref: '#/components/schemas/adresseringsInformasjon'
+        sak:
+          $ref: '#/components/schemas/sak'
+    sprak:
+      type: object
+      properties:
+        sprakKode:
+          type: string
+    land:
+      type: object
+      properties:
+        landKode:
+          type: string
+    adresseringsInformasjon:
+      type: object
+      required:
+        - mottaker
+      properties:
+        mottaker:
+          type: string
+        land:
+          $ref: '#/components/schemas/land'
+    sak:
+      type: object
+      required:
+        - gjelder
+      properties:
+        sakId:
+          type: string
+        gjelder:
+          type: string
+        journalfoerendeEnhet:
+          type: string
+        saksbehandler:
+          $ref: '#/components/schemas/saksbehandler'
+    saksbehandler:
+      type: object
+      properties:
+        saksbehandlerNavn:
+          type: string
+        saksbehandlerId:
+          type: string
