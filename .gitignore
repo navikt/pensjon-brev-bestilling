@@ -6,3 +6,5 @@ target
 *.gitignore
 brev-bestilling-boot/.settings/
 pensjon-integrasjon/.settings/
+brevbestilling-integrasjon/.settings/
+prepare-brevdata-grunnlag/.settings/

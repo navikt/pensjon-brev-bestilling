@@ -7,3 +7,16 @@ metadata:
     team: pensjonsbrev
 spec:
   image: {{image}}
+  port: 80
+  envFrom:
+    - secret: apikey-pensjon-brev-bestilling-q1
+    - secret: srvbrukker-brev-bestilling
+    - secret: apikey-prepare-brevdata-grunnlag
+  ingresses:
+    - "https://prepare-brevdata.dev.adeo.no/"
+  service:
+    port: 80
+  accessPolicy:
+    outbound:
+      external: 
+        - host: api-gw-q1.oera.no
