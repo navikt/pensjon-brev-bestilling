@@ -6,6 +6,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -109,6 +110,7 @@ public class TestController {
 		
 			HttpHeaders headers = new HttpHeaders();
 			headers.set("x-nav-apiKey", apiKeyJOARKQ1);
+			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.setBearerAuth(msg);
 			HttpEntity entity = new HttpEntity(JOARK_REQUEST_BODY,headers);
 			ResponseEntity<String> rentity = restTemplate.exchange(JOARK_SERVICE, HttpMethod.POST, entity, String.class);
