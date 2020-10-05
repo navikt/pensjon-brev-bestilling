@@ -24,7 +24,7 @@ public class TestController {
 	@Value("#{environment.PASSWORD_SRV_BRUKER_Q1}")
 	private String password="";
 	
-	@Value("#{environment.STS_API_KEY}")
+	@Value("#{environment.STS_API_KEY_Q1}")
 	private String apiKey="";
 	
 	
@@ -83,7 +83,7 @@ public class TestController {
 		restTemplate = builder.build();
 	}
 
-	@GetMapping("/sayhello")
+	@GetMapping("/sayhellosts")
 	public String hello () {
 		String message ="";
 		try {
@@ -103,7 +103,7 @@ public class TestController {
 		return "Hello! u" + username.length() +" p" + password.length() +" k" + apiKey.length() + " " + message;
 	}
 	
-	@PostMapping("/sayhello2")
+	@PostMapping("/sayhellojoark")
 	public String hello (@RequestBody String msg) {
 		String message ="";
 		try {

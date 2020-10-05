@@ -48,7 +48,7 @@ public class TestController {
 		return "Hello!";
 	}
 
-	@PostMapping("/sayhello")
+	@PostMapping("/sayhellopesys")
 	public String hello (@RequestBody String msg) {
 		String message ="";
 		try {
