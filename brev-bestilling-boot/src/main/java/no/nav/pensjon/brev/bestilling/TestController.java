@@ -34,7 +34,44 @@ public class TestController {
 	
 	private static String API_GW_Q1 = "https://api-gw-q1.oera.no";
 	
-	private static String JOARK_SERVICE = API_GW_Q1 + "/dokarkiv/rest/journalpostapi/v1/journalpost";
+	private static String JOARK_SERVICE = API_GW_Q1 + "/dokarkiv/rest/journalpostapi/v1/journalpost?forsoekFerdigstill=false";
+	
+	
+	private static String JOARK_REQUEST_BODY =  "{\r\n" + 
+			"  \"tittel\": \"Søknad om dagpenger ved permittering\",\r\n" + 
+			"  \"journalpostType\": \"INNGAAENDE\",\r\n" + 
+			"  \"tema\": \"DAG\",\r\n" + 
+			"  \"behandlingstema\": \"ab0001\",\r\n" + 
+			"  \"kanal\": \"NAV_NO\",\r\n" + 
+			"  \"journalfoerendeEnhet\": \"0701\",\r\n" + 
+			"  \"avsenderMottaker\": {\r\n" + 
+			"    \"id\": \"09071844797\",\r\n" + 
+			"    \"idType\": \"FNR\",\r\n" + 
+			"    \"navn\": \"Hansen, Per\"\r\n" + 
+			"  },\r\n" + 
+			"  \"bruker\": {\r\n" + 
+			"    \"id\": \"09071844797\",\r\n" + 
+			"    \"idType\": \"FNR\"\r\n" + 
+			"  },\r\n" + 
+			"  \"sak\": {\r\n" + 
+			"    \"fagsakId\": \"10695768\",\r\n" + 
+			"    \"fagsaksystem\": \"AO01\",\r\n" + 
+			"    \"sakstype\": \"FAGSAK\"\r\n" + 
+			"  },\r\n" + 
+			"  \"dokumenter\": [\r\n" + 
+			"    {\r\n" + 
+			"      \"tittel\": \"Søknad om dagpenger ved permittering\",\r\n" + 
+			"      \"brevkode\": \"NAV 04-01.04\",\r\n" + 
+			"      \"dokumentvarianter\": [\r\n" + 
+			"        {\r\n" + 
+			"          \"filtype\": \"PDFA\",\r\n" + 
+			"          \"fysiskDokument\": \"U8O4a25hZCBvbSBkYWdwZW5nZXIgdmVkIHBlcm1pdHRlcmluZw==\",\r\n" + 
+			"          \"variantformat\": \"ARKIV\"\r\n" + 
+			"        }\r\n" + 
+			"      ]\r\n" + 
+			"    }\r\n" + 
+			"  ]\r\n" + 
+			"}";
 	
 	@Autowired
 	public TestController(RestTemplateBuilder builder) {
@@ -73,7 +110,7 @@ public class TestController {
 			HttpHeaders headers = new HttpHeaders();
 			headers.set("x-nav-apiKey", apiKeyJOARKQ1);
 			headers.setBearerAuth(msg);
-			HttpEntity entity = new HttpEntity(headers);
+			HttpEntity entity = new HttpEntity(JOARK_REQUEST_BODY,headers);
 			ResponseEntity<String> rentity = restTemplate.exchange(JOARK_SERVICE, HttpMethod.POST, entity, String.class);
 			message = rentity.getBody();
 		}
