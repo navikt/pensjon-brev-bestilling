@@ -1,0 +1,23 @@
+apiVersion: kafka.nais.io/v1
+kind: Topic
+metadata:
+  name: pensjon-brev-bestilling
+  namespace: pensjonsbrev
+  labels:
+    team: pensjonsbrev
+spec:
+  pool: nav-dev
+  config:  # optional; all fields are optional too; defaults shown
+    cleanupPolicy: delete  # delete, compact
+    minimumInSyncReplicas: 1
+    partitions: 1
+    replication: 2
+    retentionBytes: -1
+    retentionHours: 48
+  acl:
+    - team: pensjonsbrev
+      application: pensjon-brev-bestilling
+      access: write   # read, write, readwrite
+    - team: pensjonsbrev
+      application: prepare-brevdata-grunnlag
+      access: read   # read, write, readwrite
