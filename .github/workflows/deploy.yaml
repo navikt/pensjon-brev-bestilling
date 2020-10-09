@@ -65,7 +65,7 @@ jobs:
       env:
         IMAGE: ${{env.IMAGE_BREV_BESTILLING}}
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: dev-fss
+        CLUSTER: dev-gcp
         RESOURCE: nais/nais-brev-bestilling.yml,topics/pensjon-brev-bestilling.yaml
    
   deploy-prepare-brevdata-grunnlag:
@@ -79,6 +79,6 @@ jobs:
       env:
         IMAGE: ${{env.IMAGE_PREPARE_BREVDATA_GRUNNLAG}}
         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-        CLUSTER: dev-fss
+        CLUSTER: dev-gcp
         RESOURCE: nais/nais-prepare-brevdata-grunnlag.yml
         
