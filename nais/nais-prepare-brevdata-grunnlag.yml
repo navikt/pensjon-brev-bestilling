@@ -7,3 +7,5 @@ metadata:
     team: pensjonsbrev
 spec:
   image: {{image}}
+  kafka:
+    pool: nav-dev
