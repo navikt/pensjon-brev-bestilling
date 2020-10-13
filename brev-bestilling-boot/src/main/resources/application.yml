@@ -1,0 +1,14 @@
+security-token-service:
+    client:
+        url: https://api-gw-q1.oera.no/security-token-service/rest/v1/sts
+        username: ${USERNAME_SRV_BRUKER}
+        password: ${PASSWORD_SRV_BRUKER}
+        apikey: ${STS_API_KEY}
+
+---
+spring:
+    profiles: vdi
+security-token-service:
+    client:
+        url: https://security-token-service-t4.nais.preprod.local/rest/v1/sts
+        

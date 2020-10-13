@@ -9,3 +9,13 @@ spec:
   image: {{image}}
   kafka:
     pool: nav-dev
+  envFrom:
+    - secret: apikey-pensjon-brev-bestilling
+    - secret: srvbrukker-brev-bestilling
+    - secret: apikey-prepare-brevdata-grunnlag
+  ingresses:
+    - "https://pensjon-brev-bestilling.dev.adeo.no/"
+  accessPolicy:
+    outbound:
+      external: 
+        - host: api-gw-q1.oera.no
