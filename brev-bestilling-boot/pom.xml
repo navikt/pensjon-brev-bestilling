@@ -19,6 +19,10 @@
 		<relativePath/>
 	</parent>
 
+	<properties>
+		<spring-cloud-stream.version>3.0.8.RELEASE</spring-cloud-stream.version>
+	</properties>
+
 	<dependencies>
 		<!--dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -39,6 +43,24 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream-binder-kafka</artifactId>
+			<version>${spring-cloud-stream.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
