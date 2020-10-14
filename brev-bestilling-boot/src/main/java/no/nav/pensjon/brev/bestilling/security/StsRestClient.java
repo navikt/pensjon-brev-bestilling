@@ -8,9 +8,9 @@ import org.springframework.web.client.RestTemplate;
 
 public class StsRestClient {
 	
-	private static String X_NAV_APIKEY_NAME = "x-nav-apiKey";
+	private static final String X_NAV_APIKEY_NAME = "x-nav-apiKey";
 	
-	private RestTemplate stsRestTemplate;
+	private final RestTemplate stsRestTemplate;
 	
 	
 	public StsRestClient(StsConfigurationProperties configuration, RestTemplateBuilder builder,Supplier<ClientHttpRequestFactory> clientHttpFactorySupplier) {
@@ -23,8 +23,8 @@ public class StsRestClient {
 	 	    		                                            : builder.build();
 								
 	}
-	
-	
+
+
 	public String getToken() {
 		return stsRestTemplate.postForObject("/token?grant_type=client_credentials&scope=openid", null,String.class);
 	}
