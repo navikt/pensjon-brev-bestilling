@@ -21,12 +21,12 @@ public class Application {
 	 * event message.
 	 */
 	@Bean
-	public Consumer<PubSubMessage> pubSubFunction() {
+	public Consumer<String> pubSubFunction() {
 		return message -> {
 			// The PubSubMessage data field arrives as a base-64 encoded string and must be decoded.
 			// See: https://cloud.google.com/functions/docs/calling/pubsub#event_structure
-			String decodedMessage = new String(Base64.getDecoder().decode(message.getData()), StandardCharsets.UTF_8);
-			System.out.println("Received Pub/Sub message with data: " + decodedMessage + message.getPublishTime() + " " + message.getMessageId());
+			//String decodedMessage = new String(Base64.getDecoder().decode(message.getData()), StandardCharsets.UTF_8);
+			System.out.println("Received Pub/Sub message with data: " + message);
 		};
 	}
 }
