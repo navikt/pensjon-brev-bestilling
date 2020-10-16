@@ -10,7 +10,7 @@ import java.util.List;
 public class TestBrevMetaDataEndpoint {
 
 	@Autowired
-    private BrevMetaData client;
+	private BrevMetaData client;
 	
 	@GetMapping("/brevmetadata")
 	public List brevMetaData() throws Exception {
