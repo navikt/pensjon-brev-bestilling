@@ -1,4 +1,4 @@
-package no.nav.pensjon.brev.bestilling.security;
+package no.nav.pensjon.sts.client;
 
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -7,11 +7,11 @@ import org.springframework.http.client.ClientHttpResponse;
 
 import java.io.IOException;
 
-public class STSInterceptor implements ClientHttpRequestInterceptor {
+public class StsInterceptor implements ClientHttpRequestInterceptor {
     
     private final StsRestClient stsRestClient;
 
-    public STSInterceptor(StsRestClient stsRestClient) {
+    public StsInterceptor(StsRestClient stsRestClient) {
         this.stsRestClient = stsRestClient;
     }
 

@@ -17,6 +17,33 @@
 		<module>brev-bestilling-boot</module>
 		<module>prepare-brevdata-grunnlag</module>
 		<module>brevbestilling-integrasjon</module>
-	</modules>
+        <module>sts-client</module>
+    </modules>
+
+	<properties>
+		<spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+		<httpclient.version>4.5.12</httpclient.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	
 </project>

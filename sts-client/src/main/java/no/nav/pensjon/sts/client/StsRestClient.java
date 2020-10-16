@@ -1,4 +1,4 @@
-package no.nav.pensjon.brev.bestilling.security;
+package no.nav.pensjon.sts.client;
 
 import java.util.function.Supplier;
 

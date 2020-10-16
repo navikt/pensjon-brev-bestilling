@@ -1,4 +1,4 @@
-package no.nav.pensjon.brev.bestilling.security;
+package no.nav.pensjon.sts.client;
 
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -27,8 +27,8 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 public class StsClientConfig extends StsConfigurationProperties{
 	
 		
-	    @Bean public STSInterceptor interceptor(StsRestClient stsRestClient) {
-	    	return new STSInterceptor(stsRestClient);
+	    @Bean public StsInterceptor interceptor(StsRestClient stsRestClient) {
+	    	return new StsInterceptor(stsRestClient);
 		}
 	    
 	    @Bean

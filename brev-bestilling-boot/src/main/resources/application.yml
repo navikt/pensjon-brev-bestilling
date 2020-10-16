@@ -9,21 +9,6 @@ brevmetadata:
     client:
         url: https://pensjon-brevmetadata.dev.adeo.no/api/brevdata
 
-# Binding properties
-spring:
-    cloud:
-        function:
-            definition: bestillBrevFunction #;bestillBrevSupplier
-        stream:
-            bindings:
-                bestillBrevFunction-out-0:
-                    destination: BREV_ER_BESTILLT
-                bestillBrevFunction-in-0:
-                    destination: BREV_BESTILLING
-                    group: embeddedKafkaApplication
-#               bestillBrevSupplier-out-0:
-#                   destination: BREV_ER_BESTILLT
-
 ---
 spring:
     profiles: vdi
