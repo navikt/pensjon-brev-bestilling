@@ -1,5 +1,6 @@
 package no.nav.pensjon.brev.bestilling.consumer;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -8,8 +9,8 @@ import org.springframework.web.client.RestTemplate;
 public class ConsumersConfig {
 
     @Bean
-    public BrevMetaData brevMetaData() {
-        return new BrevMetaData();
+    public BrevMetaData brevMetaData(@Value("${brevmetadata.client.url}") String url, RestTemplate restTemplate) {
+        return new BrevMetaData(url, restTemplate);
     }
 
     @Bean

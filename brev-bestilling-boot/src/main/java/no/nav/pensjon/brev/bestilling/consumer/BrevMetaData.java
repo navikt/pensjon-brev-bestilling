@@ -18,13 +18,14 @@ import java.util.Map;
 public class BrevMetaData {
     private static final Logger LOG = LoggerFactory.getLogger(BrevMetaData.class);
 
-    @Value("${brevmetadata.client.url}")
     private String endpoint;
-
-    @Autowired
     private RestTemplate restTemplate;
-
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    public BrevMetaData(String endpoint, RestTemplate restTemplate) {
+        this.endpoint = endpoint;
+        this.restTemplate = restTemplate;
+    }
 
     public List<Map<String, String>> hentAlleBrev(boolean includeXsd) throws Exception {
         ResponseEntity<String> response;
