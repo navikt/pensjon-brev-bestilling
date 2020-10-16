@@ -6,7 +6,7 @@ security-token-service:
         apikey: ${STS_API_KEY}
 
 brevmetadata:
-    endpoint:
+    client:
         url: https://pensjon-brevmetadata.dev.adeo.no/api/brevdata
 
 # Binding properties
