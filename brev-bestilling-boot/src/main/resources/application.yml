@@ -5,10 +5,29 @@ security-token-service:
         password: ${PASSWORD_SRV_BRUKER}
         apikey: ${STS_API_KEY}
 
+brevmetadata:
+    client:
+        url: https://pensjon-brevmetadata.dev.adeo.no/api/brevdata
+
+# Binding properties
+spring:
+    cloud:
+        function:
+            definition: bestillBrevFunction #;bestillBrevSupplier
+        stream:
+            bindings:
+                bestillBrevFunction-out-0:
+                    destination: BREV_ER_BESTILLT
+                bestillBrevFunction-in-0:
+                    destination: BREV_BESTILLING
+                    group: embeddedKafkaApplication
+#               bestillBrevSupplier-out-0:
+#                   destination: BREV_ER_BESTILLT
+
 ---
 spring:
     profiles: vdi
+
 security-token-service:
     client:
         url: https://security-token-service-t4.nais.preprod.local/rest/v1/sts
-        
