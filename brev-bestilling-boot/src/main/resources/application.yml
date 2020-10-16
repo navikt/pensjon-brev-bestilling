@@ -5,6 +5,10 @@ security-token-service:
         password: ${PASSWORD_SRV_BRUKER}
         apikey: ${STS_API_KEY}
 
+brevmetadata:
+    endpoint:
+        url: https://pensjon-brevmetadata.dev.adeo.no/api/brevdata
+
 # Binding properties
 spring:
     cloud:

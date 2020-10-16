@@ -1,0 +1,3 @@
+brevmetadata:
+  endpoint:
+    url: http://localhost:6060/api/brevdata
