@@ -18,7 +18,7 @@ import java.util.Map;
 public class BrevMetaData {
     private static final Logger LOG = LoggerFactory.getLogger(BrevMetaData.class);
 
-    @Value("${brevmetadata.endpoint.url}")
+    @Value("${brevmetadata.client.url}")
     private String endpoint;
 
     @Autowired
