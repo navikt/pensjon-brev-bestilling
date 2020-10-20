@@ -1,0 +1,11 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: prepare-brev
+  namespace: pensjonsbrev
+  labels:
+    team: pensjonsbrev
+spec:
+  image: {{image}}
+  kafka:
+    pool: nav-dev
