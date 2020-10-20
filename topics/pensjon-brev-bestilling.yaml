@@ -1,7 +1,7 @@
 apiVersion: kafka.nais.io/v1
 kind: Topic
 metadata:
-  name: pensjon-brev-bestilling
+  name: brev-er-bestilt
   namespace: pensjonsbrev
   labels:
     team: pensjonsbrev
@@ -21,3 +21,6 @@ spec:
     - team: pensjonsbrev
       application: prepare-brevdata-grunnlag
       access: read   # read, write, readwrite
+    - team: pensjonsbrev
+      application: pensjon-kafka-debug
+      access: read
