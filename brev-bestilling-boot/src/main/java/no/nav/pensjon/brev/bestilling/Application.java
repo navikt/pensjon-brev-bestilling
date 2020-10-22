@@ -3,11 +3,14 @@ package no.nav.pensjon.brev.bestilling;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import no.nav.pensjon.sts.client.StsClientConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
+@Import(StsClientConfig.class)
 public class Application {
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package no.nav.pensjon.brev.bestilling.security;
+package no.nav.pensjon.sts.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;

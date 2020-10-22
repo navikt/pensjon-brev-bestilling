@@ -1,5 +1,8 @@
-package no.nav.pensjon.brev.bestilling.security;
+package no.nav.pensjon.sts.client;
 
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.function.Supplier;
 
 import javax.net.ssl.SSLContext;
@@ -24,7 +27,9 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 public class StsClientConfig extends StsConfigurationProperties{
 	
 		
-	    
+	    @Bean public StsInterceptor interceptor(StsRestClient stsRestClient) {
+	    	return new StsInterceptor(stsRestClient);
+		}
 	    
 	    @Bean
 	    public StsRestClient stsRestTemplate(StsConfigurationProperties properties, RestTemplateBuilder builder,@Autowired(required = false)Supplier<ClientHttpRequestFactory> clientHttpFactorySupplier) {
@@ -38,22 +43,19 @@ public class StsClientConfig extends StsConfigurationProperties{
 				
 			 	TrustStrategy acceptingTrustStrategy = (java.security.cert.X509Certificate[] chain, String authType) -> true;
 			 	
-			 	SSLContext sslContext = null;
+			 	SSLContext sslContext;
 			 	
 			 	try {
 				     sslContext = org.apache.http.ssl.SSLContexts.custom()
 				                    .loadTrustMaterial(null, acceptingTrustStrategy)
 				                    .build();
 			 	}
-			 	catch(Exception e) {
+			 	catch(NoSuchAlgorithmException | KeyStoreException | KeyManagementException e) {
 					throw new RuntimeException(e);
 				}
-			 	
 
-			    SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
-
-			    CloseableHttpClient httpClient = HttpClients.custom()
-			                    .setSSLSocketFactory(csf)
+				CloseableHttpClient httpClient = HttpClients.custom()
+			                    .setSSLSocketFactory(new SSLConnectionSocketFactory(sslContext))
 			                    .build();
 
 			    HttpComponentsClientHttpRequestFactory requestFactory =
