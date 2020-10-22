@@ -13,16 +13,35 @@ brevmetadata:
 spring:
     cloud:
         function:
-            definition: bestillBrevFunction #;bestillBrevSupplier
+            definition: bestillBrevSupplier
         stream:
             bindings:
-                bestillBrevFunction-out-0:
-                    destination: BREV_ER_BESTILLT
-                bestillBrevFunction-in-0:
-                    destination: BREV_BESTILLING
-                    group: embeddedKafkaApplication
-#               bestillBrevSupplier-out-0:
-#                   destination: BREV_ER_BESTILLT
+                bestillBrevSupplier-out-0:
+                    destination: pensjonsbrev.brev-er-bestilt
+            poller:
+                fixed-delay: 10000
+
+---
+spring:
+    profiles: gcp
+    cloud:
+        stream:
+            kafka:
+                binder:
+                    brokers: ${KAFKA_BROKERS}
+                    configuration:
+                        security:
+                            protocol: SSL
+                        ssl:
+                            truststore:
+                                location: ${KAFKA_TRUSTSTORE_PATH}
+                                password: ${KAFKA_CREDSTORE_PASSWORD}
+                            keystore:
+                                location: ${KAFKA_KEYSTORE_PATH}
+                                password: ${KAFKA_CREDSTORE_PASSWORD}
+                                type: PKCS12
+                            key:
+                                password: ${KAFKA_CREDSTORE_PASSWORD}
 
 ---
 spring:
