@@ -16,6 +16,7 @@
 		<module>pensjon-integrasjon</module>
 		<module>brev-bestilling-boot</module>
 		<module>prepare-brevdata-grunnlag</module>
+		<module>prepare-brev</module>
 		<module>brevbestilling-integrasjon</module>
         <module>sts-client</module>
     </modules>

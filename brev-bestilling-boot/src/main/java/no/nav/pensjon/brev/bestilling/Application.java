@@ -1,10 +1,6 @@
 package no.nav.pensjon.brev.bestilling;
 
-
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import no.nav.pensjon.sts.client.StsClientConfig;
@@ -33,14 +29,6 @@ public class Application {
 			//String decodedMessage = new String(Base64.getDecoder().decode(message.getData()), StandardCharsets.UTF_8);
 			System.out.println("Received Pub/Sub message with data: " + message);
 		};
-	}
-
-	/**
-	 * Just dummy Function and Supplier
-	 */
-	@Bean
-	public Function<byte[], byte[]> bestillBrevFunction(){
-		return in -> new String(in).toUpperCase().getBytes();
 	}
 
 	@Bean

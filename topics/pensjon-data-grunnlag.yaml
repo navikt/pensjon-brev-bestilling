@@ -1,7 +1,7 @@
 apiVersion: kafka.nais.io/v1
 kind: Topic
 metadata:
-  name: brev-er-bestilt
+  name: pensjon-brev-data-grunnlag
   namespace: pensjonsbrev
   labels:
     team: pensjonsbrev
@@ -13,14 +13,11 @@ spec:
     partitions: 1
     replication: 2
     retentionBytes: -1
-    retentionHours: 48
+    retentionHours: 336 #24h/d * 14d = 336h
   acl:
     - team: pensjonsbrev
-      application: pensjon-brev-bestilling
+      application: prepare-brevdata-grunnlag
       access: write   # read, write, readwrite
     - team: pensjonsbrev
-      application: prepare-brevdata-grunnlag
-      access: read   # read, write, readwrite
-    - team: pensjonsbrev
-      application: pensjon-kafka-debug
+      application: prepare-brev
       access: read
