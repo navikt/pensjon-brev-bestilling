@@ -7,7 +7,7 @@ security-token-service:
 
 brevmetadata:
     client:
-        url: https://pensjon-brevmetadata.dev.adeo.no/api/brevdata
+        url: http://pensjon-brevmetadata/api/brevdata
 
 # Binding properties
 spring:
