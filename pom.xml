@@ -48,5 +48,12 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub navikt Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/navikt/pensjon-brev-bestilling</url>
+		</repository>
+	</distributionManagement>
 </project>
