@@ -13,6 +13,7 @@
 	<name>brev bestilling</name>
 
 	<modules>
+		<module>embedded-kafka</module>
 		<module>pensjon-integrasjon</module>
 		<module>brev-bestilling-boot</module>
 		<module>prepare-brevdata-grunnlag</module>
