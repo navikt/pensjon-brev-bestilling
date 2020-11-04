@@ -6,8 +6,8 @@ on:
       - 'pom.xml'
 
 jobs:
-  deploy-sts-client:
-    name: Deploy sts-client
+  deploy-parent-pom:
+    name: Deploy parent-pom
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
