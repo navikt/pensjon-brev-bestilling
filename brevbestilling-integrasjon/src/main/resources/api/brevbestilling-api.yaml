@@ -18,6 +18,19 @@ paths:
         '200':
           description: Successful response
 
+  /brevErBestillt:
+    post:
+      description: Service for brev er bestillt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'brevbestilling-models.yaml#/components/schemas/brevErBestillt'
+      responses:
+        '200':
+          description: Successful response
+
 components:
   securitySchemes:
     bearerAuth:

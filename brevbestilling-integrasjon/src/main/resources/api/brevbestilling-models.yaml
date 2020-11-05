@@ -22,6 +22,14 @@ components:
           $ref: '#/components/schemas/adresseringsInformasjon'
         sak:
           $ref: '#/components/schemas/sak'
+    brevErBestillt:
+      allOf:
+        - $ref: "#/components/schemas/brevbestillingRequest"
+      properties:
+        brevMetaDataene:
+          $ref: '#/components/schemas/brevMetaData'
+        jorunalforing:
+          $ref: '#/components/schemas/journalForing'
     sprak:
       type: object
       properties:
@@ -60,4 +68,44 @@ components:
         saksbehandlerNavn:
           type: string
         saksbehandlerId:
+          type: string
+    brevMetaData:
+      type: object
+      properties:
+        redigerbart:
+          type: boolean
+        dekode:
+          type: String
+        brevkategori:
+          type: String
+        dokType:
+          type: String
+        sprak:
+          $ref: '#/components/schemas/sprak'
+        visIPselv:
+          type: boolean
+        utland:
+          type: String
+        brevregeltype:
+          type: String
+        brevkravtype:
+          type: String
+        brevkontekst:
+          type: String
+        dokumentkategori:
+          type: String
+        synligForVeileder:
+          type: String
+        prioritet:
+          type: String
+        brevkodeIBrevsystem:
+          type: String
+        brevsystem:
+          type: String
+        brevgruppe:
+          type: String
+    journalForing:
+      type: object
+      properties:
+        jorunalPostId:
           type: string
