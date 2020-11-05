@@ -23,9 +23,9 @@ components:
         sak:
           $ref: '#/components/schemas/sak'
     brevErBestillt:
-      allOf:
-        - $ref: "#/components/schemas/brevbestillingRequest"
       properties:
+        brevbestillingRequest:
+          $ref: "#/components/schemas/brevbestillingRequest"
         brevMetaDataene:
           $ref: '#/components/schemas/brevMetaData'
         jorunalforing:
