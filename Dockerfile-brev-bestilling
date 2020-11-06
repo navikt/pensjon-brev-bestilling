@@ -1,3 +1,0 @@
-FROM navikt/java:11
-ENV SPRING_PROFILES_ACTIVE=gcp
-COPY brev-bestilling-boot/target/deploy/brev-bestilling-boot-0.0.1.jar /app/app.jar

@@ -1,2 +1,0 @@
-FROM navikt/java:11
-COPY prepare-brev/target/deploy/prepare-brev-0.0.1.jar /app/app.jar
