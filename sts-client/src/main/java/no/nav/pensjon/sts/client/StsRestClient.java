@@ -26,7 +26,7 @@ public class StsRestClient {
 
 
 	public String getToken() {
-		return stsRestTemplate.postForObject("/token?grant_type=client_credentials&scope=openid", null,String.class);
+		return stsRestTemplate.postForObject("/token?grant_type=client_credentials&scope=openid", null, StsResponse.class).getAccessToken();
 	}
 	
 	
