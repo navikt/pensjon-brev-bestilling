@@ -13,7 +13,7 @@
     <artifactId>brevbestilling-integrasjon</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <openapi.package>no.nav.pensjon.brevbestilling.integrasjon</openapi.package>
+        <openapi.package>no.nav.pensjon.brev.bestilling.integrasjon</openapi.package>
         <swagger-annotations.version>2.1.4</swagger-annotations.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
     </properties>

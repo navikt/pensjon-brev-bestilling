@@ -1,9 +1,9 @@
-package org.openapitools.api;
+package no.nav.pensjon.brev.bestilling.api.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import no.nav.pensjon.brevbestilling.integrasjon.api.BrevbestillingApiDelegate;
-import no.nav.pensjon.brevbestilling.integrasjon.model.BrevbestillingRequest;
+import no.nav.pensjon.brev.bestilling.integrasjon.api.BrevbestillingApiDelegate;
+import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevbestillingRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
