@@ -68,6 +68,7 @@
                                 <library>spring-boot</library>
                                 <delegatePattern>true</delegatePattern>
                                 <basePackage>${openapi.package}</basePackage>
+                                <apiPackage>${openapi.package}.api</apiPackage>
                                 <modelPackage>${openapi.package}.model</modelPackage>
                                 <title>${project.name}</title>
                             </configOptions>

@@ -2,6 +2,7 @@ package org.openapitools.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import no.nav.pensjon.brevbestilling.integrasjon.api.BrevbestillingApiDelegate;
 import no.nav.pensjon.brevbestilling.integrasjon.model.BrevbestillingRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class BrevbestillingImpl implements BrevbestillingApiDelegate{
+public class BrevbestillingImpl implements BrevbestillingApiDelegate {
     private static final Logger logger = LoggerFactory.getLogger(BrevbestillingImpl.class);
 
         @Override
