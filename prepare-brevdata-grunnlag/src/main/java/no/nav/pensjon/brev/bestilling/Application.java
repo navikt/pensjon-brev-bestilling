@@ -8,6 +8,10 @@ import java.util.function.Function;
 
 import javax.annotation.PostConstruct;
 
+import no.nav.pensjon.brev.ApiKeyInterceptor;
+import no.nav.pensjon.brev.bestilling.pesys.VedtakClient;
+import no.nav.pensjon.sts.client.*;
+import org.openapitools.client.models.VedtakDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;

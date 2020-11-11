@@ -8,6 +8,7 @@ on:
     workflows:
       - DeploySTSClient
       - DeployCommonLib
+      - PensjonIntegrasjon
     types:
       - completed
 

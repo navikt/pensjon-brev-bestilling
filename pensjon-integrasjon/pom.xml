@@ -8,9 +8,8 @@
         <groupId>no.nav</groupId>
         <version>0.0.1</version>
     </parent>
-    <groupId>no.nav.pensjon-brev-bestilling</groupId>
     <artifactId>pensjon-integrasjon</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1</version>
     <properties>
         <openapi.package>no.nav.pensjon-integrasjon</openapi.package>
         <openapi.generator.maven.plugin.generateModelTests>false</openapi.generator.maven.plugin.generateModelTests>

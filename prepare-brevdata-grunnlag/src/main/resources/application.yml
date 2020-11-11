@@ -9,6 +9,10 @@ pdl-api:
     client:
         url: https://api-gw-q1.oera.no/pdl-api/graphql
         apikey: ${PDL_API_KEY}
+vedtak-api:
+    client:
+        url: https://api-gw-q1.oera.no/pensjon-fss/pensjon-ws/api/vedtak/vedtak/
+        apikey: ${VEDTAK_API_KEY}
 
 spring:
     cloud:

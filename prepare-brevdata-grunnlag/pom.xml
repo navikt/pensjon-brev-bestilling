@@ -51,6 +51,11 @@
 			<artifactId>sts-client</artifactId>
 			<version>0.0.4</version>
 		</dependency>
+		<dependency>
+			<groupId>no.nav</groupId>
+			<artifactId>pensjon-integrasjon</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>no.nav</groupId>
