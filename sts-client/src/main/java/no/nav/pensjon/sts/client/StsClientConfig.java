@@ -33,8 +33,7 @@ public class StsClientConfig extends StsConfigurationProperties{
 	    
 	    @Bean
 	    public StsRestClient stsRestTemplate(StsConfigurationProperties properties, RestTemplateBuilder builder,@Autowired(required = false)Supplier<ClientHttpRequestFactory> clientHttpFactorySupplier) {
-	    	builder.additionalInterceptors(new ApiKeyInterceptor(properties.apikey));
-	    	return new StsRestClient(properties,builder,clientHttpFactorySupplier);
+	    	return new StsRestClient(properties,builder.additionalInterceptors(new ApiKeyInterceptor(properties.apikey)),clientHttpFactorySupplier);
 	    }
 	    
 	    @Bean()
