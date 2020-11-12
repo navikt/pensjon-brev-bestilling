@@ -8,18 +8,15 @@ import org.springframework.web.client.RestTemplate;
 public class PdlClient {
 
     private RestTemplate restTemplate;
-    private String pdlApiKey;
     private String pdlUrl;
 
-    public PdlClient(RestTemplate restTemplate, String pdlApiKey, String pdlUrl) {
+    public PdlClient(RestTemplate restTemplate, String pdlUrl) {
         this.restTemplate = restTemplate;
-        this.pdlApiKey = pdlApiKey;
         this.pdlUrl = pdlUrl;
     }
 
     public void query() {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("x-nav-apiKey", pdlApiKey);
         headers.add("Tema", "PEN");
         headers.add("content-type", "application/json");
 

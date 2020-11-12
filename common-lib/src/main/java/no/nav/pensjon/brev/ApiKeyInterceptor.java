@@ -1,4 +1,4 @@
-package no.nav.pensjon.brev.bestilling.pdl;
+package no.nav.pensjon.brev;
 
 import java.io.IOException;
 
@@ -7,21 +7,19 @@ import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 
-import no.nav.pensjon.sts.client.StsRestClient;
+public class ApiKeyInterceptor implements ClientHttpRequestInterceptor {
 
-public class PdlStsInterceptor implements ClientHttpRequestInterceptor {
+    private static final String X_NAV_APIKEY_NAME = "x-nav-apiKey";
 
-    private final StsRestClient stsRestClient;
+    private String apiKey;
 
-    public PdlStsInterceptor(StsRestClient stsRestClient) {
-        this.stsRestClient = stsRestClient;
+    public ApiKeyInterceptor(String apiKey) {
+        this.apiKey = apiKey;
     }
 
     @Override
     public ClientHttpResponse intercept(HttpRequest httpRequest, byte[] bytes, ClientHttpRequestExecution clientHttpRequestExecution) throws IOException {
-        String token = stsRestClient.getToken();
-        httpRequest.getHeaders().setBearerAuth(token);
-        httpRequest.getHeaders().add("Nav-Consumer-Token", "Bearer " + token);
+        httpRequest.getHeaders().add(X_NAV_APIKEY_NAME, apiKey);
         return clientHttpRequestExecution.execute(httpRequest, bytes);
     }
 

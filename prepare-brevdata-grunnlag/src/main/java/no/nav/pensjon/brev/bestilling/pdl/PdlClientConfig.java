@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+import no.nav.pensjon.brev.ApiKeyInterceptor;
 import no.nav.pensjon.sts.client.StsRestClient;
 
 @Configuration
@@ -20,12 +21,13 @@ public class PdlClientConfig {
     RestTemplate restTemplate(StsRestClient stsRestClient) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(new PdlStsInterceptor(stsRestClient));
+        restTemplate.getInterceptors().add(new ApiKeyInterceptor(pdlApiKey));
         return restTemplate;
     }
 
     @Bean
     PdlClient pdlClient(RestTemplate restTemplate) {
-        return new PdlClient(restTemplate, pdlApiKey, pdlUrl);
+        return new PdlClient(restTemplate, pdlUrl);
     }
 
 }
