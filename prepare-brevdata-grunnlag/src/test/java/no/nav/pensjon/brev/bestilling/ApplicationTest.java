@@ -14,7 +14,6 @@ import org.springframework.messaging.support.GenericMessage;
 public class ApplicationTest {
 
     @Test
-    @Disabled
     public void sampleTest() {
         try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
                 TestChannelBinderConfiguration.getCompleteConfiguration(

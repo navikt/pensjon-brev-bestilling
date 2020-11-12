@@ -54,12 +54,4 @@ public class Application {
 			return value.toLowerCase();
 		};
 	}
-
-	@Autowired
-	PdlClient pdlClient;
-
-	@PostConstruct
-	void testPdl() {
-		pdlClient.query();
-	}
 }
