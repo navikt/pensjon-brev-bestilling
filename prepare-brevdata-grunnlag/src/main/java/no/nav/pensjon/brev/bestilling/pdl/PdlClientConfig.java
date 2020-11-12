@@ -17,8 +17,7 @@ public class PdlClientConfig {
     @Value("${pdl-api.client.url}")
     String pdlUrl;
 
-    @Bean
-    RestTemplate restTemplate(StsRestClient stsRestClient) {
+    private RestTemplate restTemplate(StsRestClient stsRestClient) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(new PdlStsInterceptor(stsRestClient));
         restTemplate.getInterceptors().add(new ApiKeyInterceptor(pdlApiKey));
@@ -26,8 +25,8 @@ public class PdlClientConfig {
     }
 
     @Bean
-    PdlClient pdlClient(RestTemplate restTemplate) {
-        return new PdlClient(restTemplate, pdlUrl);
+    PdlClient pdlClient(StsRestClient client) {
+        return new PdlClient(restTemplate(client), pdlUrl);
     }
 
 }

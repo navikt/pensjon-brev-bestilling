@@ -9,3 +9,7 @@ pdl-api:
     client:
         url: placeholder
         apikey: placeholder
+vedtak-api:
+    client:
+        url: placeholder
+        apikey: placeholder
