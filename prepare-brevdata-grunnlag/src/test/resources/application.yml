@@ -1,0 +1,11 @@
+security-token-service:
+    client:
+        url: placeholder
+        username: placeholder
+        password: placeholder
+        apikey: placeholder
+
+pdl-api:
+    client:
+        url: placeholder
+        apikey: placeholder

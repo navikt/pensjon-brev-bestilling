@@ -1,3 +1,15 @@
+security-token-service:
+    client:
+        url: https://api-gw-q1.oera.no/security-token-service/rest/v1/sts
+        username: ${USERNAME_SRV_BRUKER}
+        password: ${PASSWORD_SRV_BRUKER}
+        apikey: ${STS_API_KEY}
+
+pdl-api:
+    client:
+        url: https://api-gw-q1.oera.no/pdl-api/graphql
+        apikey: ${PDL_API_KEY}
+
 spring:
     cloud:
         function:
@@ -9,3 +21,11 @@ spring:
                     group: pensjonsbrev
                 brevErBestiltFunction-out-0:
                     destination: pensjonsbrev.brev-data-grunnlag
+
+---
+spring:
+    profiles: vdi
+
+security-token-service:
+    client:
+        url: https://security-token-service.dev.adeo.no/security-token-service/rest/v1/sts

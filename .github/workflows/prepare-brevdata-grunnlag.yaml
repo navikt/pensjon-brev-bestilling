@@ -4,6 +4,12 @@ on:
   push:
     paths:
       - 'prepare-brevdata-grunnlag/**'
+  workflow_run:
+    workflows:
+      - DeploySTSClient
+      - DeployCommonLib
+    types:
+      - completed
 
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/prepare-brevdata-grunnlag:${{ github.sha }}

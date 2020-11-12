@@ -8,8 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 public class StsRestClient {
 	
-	private static final String X_NAV_APIKEY_NAME = "x-nav-apiKey";
-	
 	private final RestTemplate stsRestTemplate;
 	
 	
@@ -17,8 +15,7 @@ public class StsRestClient {
 		
 		 
 			builder = builder.rootUri(configuration.getUrl())
-						     .basicAuthentication(configuration.getUsername(), configuration.getPassword())
-						     .defaultHeader(X_NAV_APIKEY_NAME, configuration.getApikey());
+						     .basicAuthentication(configuration.getUsername(), configuration.getPassword());
 	 	    stsRestTemplate = clientHttpFactorySupplier != null ? builder.requestFactory(clientHttpFactorySupplier).build() 
 	 	    		                                            : builder.build();
 								
@@ -26,7 +23,7 @@ public class StsRestClient {
 
 
 	public String getToken() {
-		return stsRestTemplate.postForObject("/token?grant_type=client_credentials&scope=openid", null,String.class);
+		return stsRestTemplate.postForObject("/token?grant_type=client_credentials&scope=openid", null, StsResponse.class).getAccessToken();
 	}
 	
 	

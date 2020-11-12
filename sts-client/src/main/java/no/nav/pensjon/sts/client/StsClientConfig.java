@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
-
+import no.nav.pensjon.brev.ApiKeyInterceptor;
 
 @Configuration
 @EnableConfigurationProperties()
@@ -33,7 +33,7 @@ public class StsClientConfig extends StsConfigurationProperties{
 	    
 	    @Bean
 	    public StsRestClient stsRestTemplate(StsConfigurationProperties properties, RestTemplateBuilder builder,@Autowired(required = false)Supplier<ClientHttpRequestFactory> clientHttpFactorySupplier) {
-	    	return new StsRestClient(properties,builder,clientHttpFactorySupplier);
+	    	return new StsRestClient(properties,builder.additionalInterceptors(new ApiKeyInterceptor(properties.apikey)),clientHttpFactorySupplier);
 	    }
 	    
 	    @Bean()
