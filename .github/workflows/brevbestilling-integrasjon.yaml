@@ -22,4 +22,4 @@ jobs:
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn -B --settings ../.github/settings.xml test --file pom.xml
+        run: mvn -B --settings ../.github/settings.xml deploy --file pom.xml
