@@ -20,7 +20,9 @@ spring:
                     destination: pensjonsbrev.brev-er-bestilt
             poller:
                 fixed-delay: 10000
-
+openapi:
+    brevbestilling-integrasjon:
+        base-path: /api
 ---
 spring:
     profiles: vdi
