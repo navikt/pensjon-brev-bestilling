@@ -9,3 +9,12 @@ spec:
   image: {{image}}
   kafka:
     pool: nav-dev
+  envFrom:
+    - secret: srvbrukker-brev-bestilling
+    - secret: apikey-prepare-brevdata-grunnlag
+  accessPolicy:
+    outbound:
+      rules:
+        - application: pdl-api
+      external:
+        - host: api-gw-q1.oera.no
