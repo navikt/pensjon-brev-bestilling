@@ -13,3 +13,7 @@ vedtak-api:
     client:
         url: placeholder
         apikey: placeholder
+sak-api:
+    client:
+        url: placeholder
+        apikey: placeholder
