@@ -1,33 +1,17 @@
 package no.nav.pensjon.brev.bestilling;
 
-
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import javax.annotation.PostConstruct;
-
-import no.nav.pensjon.brev.ApiKeyInterceptor;
-import no.nav.pensjon.brev.bestilling.pesys.VedtakClient;
-import no.nav.pensjon.sts.client.*;
-import org.openapitools.client.models.VedtakDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 
-import no.nav.pensjon.brev.bestilling.pdl.PdlClient;
 import no.nav.pensjon.brev.bestilling.pdl.PdlClientConfig;
 import no.nav.pensjon.sts.client.StsClientConfig;
-import no.nav.pensjon.sts.client.StsRestClient;
 
 @SpringBootApplication
 @Import({StsClientConfig.class, PdlClientConfig.class})
@@ -58,4 +42,5 @@ public class Application {
 			return value.toLowerCase();
 		};
 	}
+
 }

@@ -13,6 +13,10 @@ vedtak-api:
     client:
         url: https://api-gw-q1.oera.no/pensjon-fss/pensjon-ws/api/vedtak/vedtak/
         apikey: ${VEDTAK_API_KEY}
+sak-api:
+    client:
+        url: https://api-gw-q1.oera.no/pensjon-fss/pensjon-ws/api/sak/sakid/
+        apikey: ${SAK_API_KEY}
 
 spring:
     cloud:
