@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'brev-bestilling-boot/**'
+      - 'nais/nais-brev-bestilling.yml'
   workflow_run:
     workflows:
       - DeploySTSClient

@@ -14,7 +14,7 @@ spec:
     - secret: srvbrukker-brev-bestilling
     - secret: apikey-prepare-brevdata-grunnlag
   ingresses:
-    - "https://pensjon-brev-bestilling.dev.adeo.no/"
+    - "https://pensjon-brev-bestilling.dev.intern.nav.no/"
   accessPolicy:
     outbound:
       rules:
