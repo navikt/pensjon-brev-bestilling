@@ -1,7 +1,6 @@
 package no.nav.pensjon.brev.bestilling.pesys;
 
-import no.nav.pensjon.brev.ApiKeyInterceptor;
-import no.nav.pensjon.brev.bestilling.pdl.PdlClient;
+import no.nav.pensjon.brev.ApiKeyInterceptorSpring;
 import no.nav.pensjon.sts.client.StsInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +19,7 @@ public class VedtakConfig {
     private RestTemplate restTemplate(StsInterceptor stsInterceptor) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(stsInterceptor);
-        restTemplate.getInterceptors().add(new ApiKeyInterceptor(vedtakApiKey));
+        restTemplate.getInterceptors().add(new ApiKeyInterceptorSpring(vedtakApiKey));
         return restTemplate;
     }
 

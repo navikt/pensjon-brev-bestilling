@@ -2,14 +2,16 @@ package no.nav.pensjon.brev.bestilling.pdl;
 
 import java.io.IOException;
 
-import org.springframework.http.HttpRequest;
-import org.springframework.http.client.ClientHttpRequestExecution;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.ClientHttpResponse;
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import no.nav.pensjon.sts.client.StsRestClient;
 
-public class PdlStsInterceptor implements ClientHttpRequestInterceptor {
+public class PdlStsInterceptor implements Interceptor {
+
+    private static final String AUTHORIZATION = "Authorization";
+    private static final String NAV_CONSUMER_TOKEN = "Nav-Consumer-Token";
 
     private final StsRestClient stsRestClient;
 
@@ -18,11 +20,14 @@ public class PdlStsInterceptor implements ClientHttpRequestInterceptor {
     }
 
     @Override
-    public ClientHttpResponse intercept(HttpRequest httpRequest, byte[] bytes, ClientHttpRequestExecution clientHttpRequestExecution) throws IOException {
-        String token = stsRestClient.getToken();
-        httpRequest.getHeaders().setBearerAuth(token);
-        httpRequest.getHeaders().add("Nav-Consumer-Token", "Bearer " + token);
-        return clientHttpRequestExecution.execute(httpRequest, bytes);
-    }
+    public Response intercept(Chain chain) throws IOException {
+        String bearerToken = "Bearer " + stsRestClient.getToken();
+        Request request = chain.request().newBuilder()
+                .addHeader(AUTHORIZATION, bearerToken)
+                .addHeader(NAV_CONSUMER_TOKEN, bearerToken)
+                .addHeader("Tema", "PEN")
+                .build();
 
+        return chain.proceed(request);
+    }
 }

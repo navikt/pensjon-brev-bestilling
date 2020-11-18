@@ -1,30 +1,29 @@
 package no.nav.pensjon.brev.bestilling.pdl;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
+import static no.nav.pensjon.brev.bestilling.pdl.ApolloClientUtils.toCompletableFuture;
+
+import java.util.Optional;
+
+import com.apollographql.apollo.ApolloClient;
+
+import no.nav.pensjon.brev.bestilling.pdl.graphql.queries.HentIdenterQuery;
 
 public class PdlClient {
 
-    private RestTemplate restTemplate;
-    private String pdlUrl;
+    private ApolloClient apolloClient;
 
-    public PdlClient(RestTemplate restTemplate, String pdlUrl) {
-        this.restTemplate = restTemplate;
-        this.pdlUrl = pdlUrl;
+    private static String testIdent = "12345678910";
+
+    public PdlClient(ApolloClient apolloClient) {
+        this.apolloClient = apolloClient;
     }
 
-    public void query() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Tema", "PEN");
-        headers.add("content-type", "application/json");
+    public void hentIdenter() {
+        Optional<HentIdenterQuery.Data> response = toCompletableFuture(
+                apolloClient.query(new HentIdenterQuery(testIdent)))
+                .join()
+                .getData();
 
-        // query is a grapql query wrapped into a String
-        String query1 = "{\"query\":\"query{\\n  hentIdenter(ident: 12345678910, grupper: FOLKEREGISTERIDENT, historikk: false){\\n    identer {\\n      ident\\n    }\\n  "
-                + "}\\n}\",\"variables\":{}}";
-
-        ResponseEntity<String> response = restTemplate.postForEntity(pdlUrl, new HttpEntity<>(query1, headers), String.class);
-        System.out.println("The response=================\n"+response);
+        System.out.println("The response=================\n"+response.toString());
     }
 }

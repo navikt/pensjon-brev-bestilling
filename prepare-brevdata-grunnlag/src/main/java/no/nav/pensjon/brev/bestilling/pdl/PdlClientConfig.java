@@ -1,11 +1,14 @@
 package no.nav.pensjon.brev.bestilling.pdl;
 
+import com.apollographql.apollo.ApolloClient;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
 
-import no.nav.pensjon.brev.ApiKeyInterceptor;
+import okhttp3.OkHttpClient;
+
+import no.nav.pensjon.brev.ApiKeyInterceptorOkHttp;
 import no.nav.pensjon.sts.client.StsRestClient;
 
 @Configuration
@@ -17,16 +20,19 @@ public class PdlClientConfig {
     @Value("${pdl-api.client.url}")
     String pdlUrl;
 
-    private RestTemplate restTemplate(StsRestClient stsRestClient) {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getInterceptors().add(new PdlStsInterceptor(stsRestClient));
-        restTemplate.getInterceptors().add(new ApiKeyInterceptor(pdlApiKey));
-        return restTemplate;
+    private ApolloClient apolloClient(StsRestClient stsRestClient) {
+        return ApolloClient.builder()
+                .serverUrl(pdlUrl)
+                .okHttpClient((new OkHttpClient.Builder())
+                        .addInterceptor(new PdlStsInterceptor(stsRestClient))
+                        .addInterceptor(new ApiKeyInterceptorOkHttp(pdlApiKey))
+                        .build())
+                .build();
     }
 
     @Bean
-    PdlClient pdlClient(StsRestClient client) {
-        return new PdlClient(restTemplate(client), pdlUrl);
+    PdlClient pdlClient(StsRestClient stsRestClient) {
+        return new PdlClient(apolloClient(stsRestClient));
     }
 
 }
