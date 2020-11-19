@@ -7,3 +7,23 @@ spring:
             kafka:
                 binder:
                     brokers: localhost:9092
+
+security-token-service:
+    client:
+        url: placeholder
+        username: placeholder
+        password: placeholder
+        apikey: placeholder
+
+pdl-api:
+    client:
+        url: https://placeholder
+        apikey: placeholder
+vedtak-api:
+    client:
+        url: placeholder
+        apikey: placeholder
+sak-api:
+    client:
+        url: placeholder
+        apikey: placeholder

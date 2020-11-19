@@ -18,17 +18,29 @@ sak-api:
         url: https://api-gw-q1.oera.no/pensjon-fss/pensjon-ws/api/sak/sakid/
         apikey: ${SAK_API_KEY}
 
-spring:
-    cloud:
-        function:
-            definition: brevErBestiltFunction
-        stream:
-            bindings:
-                brevErBestiltFunction-in-0:
-                    destination: pensjonsbrev.brev-er-bestilt
-                    group: pensjonsbrev
-                brevErBestiltFunction-out-0:
-                    destination: pensjonsbrev.brev-data-grunnlag
+spring.cloud:
+    function.definition: brevErBestilt;brevErBestiltDlt
+    stream:
+        bindings:
+            brevErBestilt-in-0:
+                destination: pensjonsbrev.brev-er-bestilt
+                group: pensjonsbrev
+                maxAttempts: 3
+                backOffInitialInterval: 2000
+                backOffMaxInterval: 20000
+                backOffMultiplier: 2
+            brevErBestilt-out-0.destination: pensjonsbrev.brev-data-grunnlag
+            brevErBestiltDlt-in-0:
+                destination: pensjonsbrev.brev-er-bestilt-dlt
+                group: prepare-brevdata-grunnlag
+                maxAttempts: 1
+            brevErBestiltDlt-out-0.destination: pensjonsbrev.brev-data-grunnlag
+        kafka.default.consumer: #TODO hvordan spesifisere for kun enkelt channel?
+            enableDlq: true
+            dlqName: pensjonsbrev.brev-er-bestilt-dlt
+
+management.endpoints.web.exposure.include: bindings
+
 
 ---
 spring:
