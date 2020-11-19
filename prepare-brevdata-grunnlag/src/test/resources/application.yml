@@ -7,7 +7,7 @@ security-token-service:
 
 pdl-api:
     client:
-        url: placeholder
+        url: https://placeholder
         apikey: placeholder
 vedtak-api:
     client:
