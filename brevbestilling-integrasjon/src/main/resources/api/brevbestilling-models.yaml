@@ -5,7 +5,6 @@ components:
       required:
         - brevKode
         - sensitivt
-        - adresseringsInformasjon
         - sak
       properties:
         brevKode:
@@ -42,8 +41,6 @@ components:
           type: string
     adresseringsInformasjon:
       type: object
-      required:
-        - mottaker
       properties:
         mottaker:
           type: string
