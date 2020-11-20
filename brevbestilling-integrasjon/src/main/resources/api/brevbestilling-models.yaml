@@ -1,6 +1,27 @@
 components:
   schemas:
-    brevbestillingRequest:
+    brevBestillingRequest:
+      type: object
+      properties:
+        brevBestilling:
+            $ref: '#/components/schemas/brevBestilling'
+    brevBestillingResponse:
+      type: object
+      properties:
+        brevBestilling:
+            $ref: '#/components/schemas/brevBestilling'
+        jorunalforing:
+            $ref: '#/components/schemas/journalFoering'
+    brevErBestilt:
+      type: object
+      properties:
+        brevbestillingRequest:
+          $ref: "#/components/schemas/brevBestilling"
+        brevMetaDataene:
+          $ref: '#/components/schemas/brevMetaData'
+        jorunalforing:
+          $ref: '#/components/schemas/journalFoering'
+    brevBestilling:
       type: object
       required:
         - brevKode
@@ -21,14 +42,6 @@ components:
           $ref: '#/components/schemas/adresseringsInformasjon'
         sak:
           $ref: '#/components/schemas/sak'
-    brevErBestillt:
-      properties:
-        brevbestillingRequest:
-          $ref: "#/components/schemas/brevbestillingRequest"
-        brevMetaDataene:
-          $ref: '#/components/schemas/brevMetaData'
-        jorunalforing:
-          $ref: '#/components/schemas/journalForing'
     sprak:
       type: object
       properties:
@@ -101,7 +114,7 @@ components:
           type: String
         brevgruppe:
           type: String
-    journalForing:
+    journalFoering:
       type: object
       properties:
         jorunalPostId:
