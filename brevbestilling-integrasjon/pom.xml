@@ -15,6 +15,12 @@
         <openapi.package>no.nav.pensjon.brev.bestilling.integrasjon</openapi.package>
         <swagger-annotations.version>2.1.4</swagger-annotations.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
+
+        <openapi.generator.maven.plugin.generateModelTests>false</openapi.generator.maven.plugin.generateModelTests>
+        <openapi.generator.maven.plugin.generateApis>false</openapi.generator.maven.plugin.generateApis>
+        <openapi.generator.maven.plugin.generateSupportingFiles>false</openapi.generator.maven.plugin.generateSupportingFiles>
+        <openapi.generator.maven.plugin.generateModelDocumentation>false</openapi.generator.maven.plugin.generateModelDocumentation>
+        <openapi.generator.maven.plugin.generateApiDocumentation>false</openapi.generator.maven.plugin.generateApiDocumentation>
     </properties>
     <dependencies>
         <dependency>
@@ -71,6 +77,12 @@
                             <inputSpec>${project.basedir}/src/main/resources/api/brevbestilling-api.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <configOptions>
+                                <generateModels>true</generateModels>
+                                <generateModelsTests>false</generateModelsTests>
+                                <generateApis>false</generateApis>
+                                <generateSupportingFiles>false</generateSupportingFiles>
+                                <generateModelDocumentation>false</generateModelDocumentation>
+                                <generateApiDocumentation>false</generateApiDocumentation>
                                 <library>spring-boot</library>
                                 <delegatePattern>true</delegatePattern>
                                 <basePackage>${openapi.package}</basePackage>

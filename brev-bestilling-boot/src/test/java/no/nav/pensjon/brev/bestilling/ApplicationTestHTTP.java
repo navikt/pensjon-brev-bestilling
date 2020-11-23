@@ -1,27 +1,38 @@
 package no.nav.pensjon.brev.bestilling;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Collections;
-import java.util.Map;
+import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevbestillingRequest;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.common.serialization.ByteArrayDeserializer;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.test.rule.EmbeddedKafkaRule;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
+import scala.annotation.varargs;
 
+import java.net.URI;
+import java.util.Collections;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class ApplicationTest {
+public class ApplicationTestHTTP {
 
     private static final String OUTPUT_TOPIC = "pensjonsbrev.brev-er-bestilt";
     private static final String GROUP_NAME = "embeddedKafkaApplication";
@@ -34,9 +45,23 @@ public class ApplicationTest {
         System.setProperty("spring.cloud.stream.kafka.binder.brokers", embeddedKafka.getEmbeddedKafka().getBrokersAsString());
     }
 
-    @Ignore
+    @Autowired
+    private TestRestTemplate rest;
+
     @Test
-    public void testBestillBrevSupplier() {
+    public void test() throws Exception {
+        BrevbestillingRequest request = new BrevbestillingRequest();
+        request.setBrevKode("0000129");
+        ResponseEntity<String> result = this.rest.exchange(
+                RequestEntity.post(new URI("/brevbestilling")).body(request), String.class);
+        System.out.println("giraff" + result.getBody());
+        Assert.assertEquals(200, result.getStatusCodeValue());
+
+        assertKafka();
+    }
+
+    private void assertKafka(){
+
         Map<String, Object> consumerProps = KafkaTestUtils.consumerProps(GROUP_NAME, "false", embeddedKafka.getEmbeddedKafka());
         consumerProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         consumerProps.put("key.deserializer", ByteArrayDeserializer.class);

@@ -3,9 +3,13 @@ package no.nav.pensjon.brev.bestilling;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+
+import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevbestillingRequest;
 import no.nav.pensjon.sts.client.StsClientConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -33,22 +37,24 @@ public class Application {
 		};
 	}
 
-	@Bean
-	public Supplier<byte[]> bestillBrevSupplier(){
-		return () -> "TEST BREV_ER_BESTILLT".getBytes();
-	}
-
-
-
 //	@Bean
-//	public Function<String, String> bestillBrevSupplier(){
-//		return (param1) -> {
-//			brevErBestillt();
-//
-//			System.out.println(param1);
-//			return param1;
-//		};
+//	public Supplier<byte[]> bestillBrevSupplier(){
+//		return () -> "TEST BREV_ER_BESTILLT".getBytes();
 //	}
+
+	@Autowired
+	public StreamBridge streamBridge;
+
+	@Bean
+	public Function<BrevbestillingRequest, String> brevbestilling(){
+		return (param1) -> {
+			streamBridge.send("brevbestilling-out-0",param1);
+			brevErBestillt();
+
+			System.out.println(param1);
+			return "antilope";
+		};
+	}
 
 	@Bean
 	public Function<String, String> brevErBestillt(){
