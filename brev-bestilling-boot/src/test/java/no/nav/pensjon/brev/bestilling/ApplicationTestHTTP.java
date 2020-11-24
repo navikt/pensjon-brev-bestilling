@@ -1,6 +1,6 @@
 package no.nav.pensjon.brev.bestilling;
 
-import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevbestillingRequest;
+import no.nav.pensjon.brev.bestilling.integrasjon.model.*;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -50,8 +50,23 @@ public class ApplicationTestHTTP {
 
     @Test
     public void test() throws Exception {
-        BrevbestillingRequest request = new BrevbestillingRequest();
-        request.setBrevKode("0000129");
+        BrevbestillingRequest request = new BrevbestillingRequest()
+                .brevKode("0000129")
+
+                .sprak(new Sprak().sprakKode("NB"))
+                .sensitivt(true)
+                .kravId("Krav1")
+                .vedtakId("VedatkId1")
+                .adresseringsInformasjon(new AdresseringsInformasjon()
+                        .mottaker("Mottaker 1")
+                        .land(new Land().landKode("NO")))
+                .sak(new Sak().sakId("000001")
+                        .gjelder("saken gjelder")
+                        .journalfoerendeEnhet("journalførendeEnhetNR1")
+                        .saksbehandler(new Saksbehandler()
+                                .saksbehandlerId("00002")
+                                .saksbehandlerNavn("Sak Behandlersen")));
+
         ResponseEntity<String> result = this.rest.exchange(
                 RequestEntity.post(new URI("/brevbestilling")).body(request), String.class);
         System.out.println("giraff" + result.getBody());
@@ -74,6 +89,6 @@ public class ApplicationTestHTTP {
         consumer.commitSync();
 
         assertThat(records.count()).isEqualTo(1);
-        assertThat(new String(records.iterator().next().value())).isEqualTo("TEST BREV_ER_BESTILLT");
+        assertThat(new String(records.iterator().next().value())).isEqualTo("{\"brevKode\":\"0000129\",\"sprak\":{\"sprakKode\":\"NB\"},\"sensitivt\":true,\"kravId\":\"Krav1\",\"vedtakId\":\"VedatkId1\",\"adresseringsInformasjon\":{\"mottaker\":\"Mottaker 1\",\"land\":{\"landKode\":\"NO\"}},\"sak\":{\"sakId\":\"000001\",\"gjelder\":\"saken gjelder\",\"journalfoerendeEnhet\":\"journalførendeEnhetNR1\",\"saksbehandler\":{\"saksbehandlerNavn\":\"Sak Behandlersen\",\"saksbehandlerId\":\"00002\"}}}");
     }
 }
