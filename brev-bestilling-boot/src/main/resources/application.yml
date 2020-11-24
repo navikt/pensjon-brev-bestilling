@@ -13,13 +13,12 @@ brevmetadata:
 spring:
     cloud:
         function:
-            definition: bestillBrevSupplier
+            definition: brevbestilling
         stream:
             bindings:
-                bestillBrevSupplier-out-0:
+                brevbestilling-out-0:
                     destination: pensjonsbrev.brev-er-bestilt
-            poller:
-                fixed-delay: 10000
+
 openapi:
     brevbestilling-integrasjon:
         base-path: /api
