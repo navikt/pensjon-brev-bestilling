@@ -50,7 +50,7 @@ public class ApplicationTestHTTP {
 
     @Test
     public void test() throws Exception {
-        BrevbestillingRequest request = new BrevbestillingRequest()
+        BrevBestillingRequest request = new BrevBestillingRequest().brevBestilling(new BrevBestilling()
                 .brevKode("0000129")
 
                 .sprak(new Sprak().sprakKode("NB"))
@@ -65,7 +65,7 @@ public class ApplicationTestHTTP {
                         .journalfoerendeEnhet("journalførendeEnhetNR1")
                         .saksbehandler(new Saksbehandler()
                                 .saksbehandlerId("00002")
-                                .saksbehandlerNavn("Sak Behandlersen")));
+                                .saksbehandlerNavn("Sak Behandlersen"))));
 
         ResponseEntity<String> result = this.rest.exchange(
                 RequestEntity.post(new URI("/brevbestilling")).body(request), String.class);
@@ -89,6 +89,6 @@ public class ApplicationTestHTTP {
         consumer.commitSync();
 
         assertThat(records.count()).isEqualTo(1);
-        assertThat(new String(records.iterator().next().value())).isEqualTo("{\"brevKode\":\"0000129\",\"sprak\":{\"sprakKode\":\"NB\"},\"sensitivt\":true,\"kravId\":\"Krav1\",\"vedtakId\":\"VedatkId1\",\"adresseringsInformasjon\":{\"mottaker\":\"Mottaker 1\",\"land\":{\"landKode\":\"NO\"}},\"sak\":{\"sakId\":\"000001\",\"gjelder\":\"saken gjelder\",\"journalfoerendeEnhet\":\"journalførendeEnhetNR1\",\"saksbehandler\":{\"saksbehandlerNavn\":\"Sak Behandlersen\",\"saksbehandlerId\":\"00002\"}}}");
+        assertThat(new String(records.iterator().next().value())).isEqualTo("{\"brevBestilling\":{\"brevKode\":\"0000129\",\"sprak\":{\"sprakKode\":\"NB\"},\"sensitivt\":true,\"kravId\":\"Krav1\",\"vedtakId\":\"VedatkId1\",\"adresseringsInformasjon\":{\"mottaker\":\"Mottaker 1\",\"land\":{\"landKode\":\"NO\"}},\"sak\":{\"sakId\":\"000001\",\"gjelder\":\"saken gjelder\",\"journalfoerendeEnhet\":\"journalførendeEnhetNR1\",\"saksbehandler\":{\"saksbehandlerNavn\":\"Sak Behandlersen\",\"saksbehandlerId\":\"00002\"}}}}");
     }
 }

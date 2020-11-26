@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevbestillingRequest;
+import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevBestillingRequest;
 import no.nav.pensjon.sts.client.StsClientConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -27,7 +27,7 @@ public class Application {
 	private StreamBridge streamBridge;
 
 	@Bean
-	public Function<BrevbestillingRequest, String> brevbestilling(){
+	public Function<BrevBestillingRequest, String> brevbestilling(){
 		return (param1) -> {
 			streamBridge.send("brevbestilling-out-0",param1);
 

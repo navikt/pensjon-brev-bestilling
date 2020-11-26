@@ -13,7 +13,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'brevbestilling-models.yaml#/components/schemas/brevbestillingRequest'
+              $ref: 'brevbestilling-models.yaml#/components/schemas/brevBestillingRequest'
       responses:
         '200':
           description: Successful response
@@ -26,10 +26,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'brevbestilling-models.yaml#/components/schemas/brevErBestillt'
+              $ref: 'brevbestilling-models.yaml#/components/schemas/brevErBestilt'
       responses:
         '200':
-          description: Successful response
+            description: Successful response
+            content:
+                application/json:
+                    schema:
+                      $ref: 'brevbestilling-models.yaml#/components/schemas/brevBestillingResponse'
 
 components:
   securitySchemes:
