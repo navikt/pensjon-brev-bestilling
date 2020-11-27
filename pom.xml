@@ -21,6 +21,8 @@
 		<module>brev-bestilling-boot</module>
 		<module>prepare-brevdata-grunnlag</module>
 		<module>prepare-brev</module>
+		<module>common-lib</module>
+		<module>joark-integrasjon</module>
 	</modules>
 
 	<properties>

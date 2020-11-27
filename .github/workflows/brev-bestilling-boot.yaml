@@ -9,6 +9,7 @@ on:
     workflows:
       - DeploySTSClient
       - BrevbestillingIntegrasjon
+      - JoarkIntegrasjon
     types:
       - completed
 
