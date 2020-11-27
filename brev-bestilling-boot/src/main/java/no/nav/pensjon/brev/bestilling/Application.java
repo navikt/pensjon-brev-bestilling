@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import no.nav.joark.JoarkClient;
+import no.nav.joark.JoarkConfig;
 import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevBestilling;
 import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevBestillingRequest;
 import no.nav.pensjon.brev.bestilling.integrasjon.model.BrevErBestilt;
 import no.nav.pensjon.sts.client.StsClientConfig;
 
 @SpringBootApplication
-@Import(StsClientConfig.class)
 @RestController
+@Import({StsClientConfig.class, JoarkConfig.class})
 public class Application {
 
 	public static void main(String[] args) {
@@ -29,13 +31,16 @@ public class Application {
 
 	@Autowired
 	private StreamBridge streamBridge;
+	@Autowired
+	private JoarkClient joarkClient;
 
 	@Bean
 	public Function<BrevBestillingRequest, String> brevbestilling(){
-		return (param1) -> {
-			streamBridge.send("brevbestilling-out-0",param1);
+		return (request) -> {
+			String joarkId = joarkClient.opprett();
+			streamBridge.send("brevbestilling-out-0",request);
 
-			return "antilope";
+			return joarkId;
 		};
 	}
 

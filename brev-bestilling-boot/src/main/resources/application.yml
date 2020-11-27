@@ -9,6 +9,11 @@ brevmetadata:
     client:
         url: http://pensjon-brevmetadata/api/brevdata
 
+joark-api:
+    client:
+        url: https://api-gw-q1.oera.no/dokarkiv/rest/journalpostapi/v1/journalpost
+        apikey: ${JOARK_API_KEY}
+
 # Binding properties
 spring:
     cloud:
