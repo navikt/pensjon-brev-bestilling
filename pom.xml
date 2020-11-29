@@ -13,14 +13,14 @@
 	<name>brev bestilling</name>
 
 	<modules>
+		<module>common-lib</module>
+		<module>sts-client</module>
 		<module>embedded-kafka</module>
 		<module>brevbestilling-integrasjon</module>
-		<module>sts-client</module>
 		<module>pensjon-integrasjon</module>
 		<module>brev-bestilling-boot</module>
 		<module>prepare-brevdata-grunnlag</module>
 		<module>prepare-brev</module>
-		<module>common-lib</module>
 	</modules>
 
 	<properties>

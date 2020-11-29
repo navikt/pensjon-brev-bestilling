@@ -7,6 +7,9 @@
         <groupId>no.nav</groupId>
         <version>0.0.1</version>
     </parent>
+
+    <version>0.0.2</version>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>common-lib</artifactId>
@@ -15,6 +18,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.12.11</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-import no.nav.pensjon.brev.ApiKeyInterceptor;
+import no.nav.pensjon.brev.ApiKeyInterceptorSpring;
 import no.nav.pensjon.sts.client.StsInterceptor;
 
 @Configuration
@@ -20,7 +20,7 @@ public class SakConfig {
     private RestTemplate restTemplate(StsInterceptor stsInterceptor) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(stsInterceptor);
-        restTemplate.getInterceptors().add(new ApiKeyInterceptor(sakApiKey));
+        restTemplate.getInterceptors().add(new ApiKeyInterceptorSpring(sakApiKey));
         return restTemplate;
     }
 

@@ -7,13 +7,13 @@ import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 
-public class ApiKeyInterceptor implements ClientHttpRequestInterceptor {
+public class ApiKeyInterceptorSpring implements ClientHttpRequestInterceptor {
 
     private static final String X_NAV_APIKEY_NAME = "x-nav-apiKey";
 
     private String apiKey;
 
-    public ApiKeyInterceptor(String apiKey) {
+    public ApiKeyInterceptorSpring(String apiKey) {
         this.apiKey = apiKey;
     }
 
