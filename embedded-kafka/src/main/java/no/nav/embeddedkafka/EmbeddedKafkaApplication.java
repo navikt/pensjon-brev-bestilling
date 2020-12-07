@@ -14,6 +14,7 @@ import org.springframework.kafka.test.EmbeddedKafkaBroker;
 public class EmbeddedKafkaApplication {
 
 	private static final String BREV_ER_BESTILT = "pensjonsbrev.brev-er-bestilt";
+	private static final String BREV_ER_BESTILT_DLT = BREV_ER_BESTILT + "-dlt";
 	private static final String BREV_DATA_GRUNNLAG = "pensjonsbrev.brev-data-grunnlag";
 
 	public static void main(String[] args) {
@@ -36,6 +37,16 @@ public class EmbeddedKafkaApplication {
 	@KafkaListener(id = "brevErBestilltListener", topics = BREV_ER_BESTILT)
 	public void brevErBestiltListener(String in) {
 		printTopicMessage(BREV_ER_BESTILT, in);
+	}
+
+	@Bean
+	public NewTopic brevErBestiltDltTopic() {
+		return TopicBuilder.name(BREV_ER_BESTILT_DLT).partitions(1).replicas(1).build();
+	}
+
+	@KafkaListener(id = "brevErBestilltDltListener", topics = BREV_ER_BESTILT_DLT)
+	public void brevErBestiltDltListener(String in) {
+		printTopicMessage(BREV_ER_BESTILT_DLT, in);
 	}
 
 

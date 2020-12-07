@@ -51,4 +51,4 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
-          RESOURCE: nais/nais-prepare-brevdata-grunnlag.yml
+          RESOURCE: nais/nais-prepare-brevdata-grunnlag.yml,topics/pensjon-brev-bestilling-dlt.yaml
