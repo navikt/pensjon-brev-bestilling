@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class JoarkConfig {
-    @Value("${joark-api.client.apikey")
+    @Value("${joark-api.client.apikey}")
     String joarkApiKey;
 
     @Value("${joark-api.client.url}")

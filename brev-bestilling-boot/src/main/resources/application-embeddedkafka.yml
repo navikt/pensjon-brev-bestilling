@@ -7,3 +7,8 @@ spring:
             kafka:
                 binder:
                     brokers: localhost:9092
+
+joark-api:
+    client:
+        url: PlaceHolder
+        apikey: PlaceHolder
