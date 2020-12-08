@@ -9,7 +9,7 @@
         <version>0.0.1</version>
     </parent>
     <artifactId>joark-integrasjon</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <properties>
         <openapi.package>no.nav.joarkintegrasjon</openapi.package>
         <openapi.generator.maven.plugin.basePackage>${openapi.package}</openapi.generator.maven.plugin.basePackage>
@@ -94,6 +94,7 @@
                                 <basePackage>${openapi.package}</basePackage>
                                 <modelPackage>${openapi.package}.model</modelPackage>
                                 <title>${project.name}</title>
+                                <enumPropertyNaming>UPPERCASE</enumPropertyNaming>
                             </configOptions>
                         </configuration>
                     </execution>

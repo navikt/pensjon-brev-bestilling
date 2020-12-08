@@ -78,20 +78,20 @@ public class Application {
 	private int sometimesCount = 0;
 	private BrevErBestilt processBrevErBestilt(BrevErBestilt brevErBestilt) {
 
-		if (brevErBestilt.getBrevbestillingRequest() == null ||
-				brevErBestilt.getBrevbestillingRequest().getBrevKode() == null) {
-			return brevErBestilt;
-		}
-
-		if (brevErBestilt.getBrevbestillingRequest().getBrevKode().contains("sometimes")) {
-			sometimesCount++;
-			if (sometimesCount % 4 != 0) {
-				throw new RuntimeException("sometimes failed.");
-			}
-		}
-		else if (brevErBestilt.getBrevbestillingRequest().getBrevKode().contains("error")) {
-			throw new RuntimeException("error failed.");
-		}
+//		if (brevErBestilt.getBrevbestillingRequest() == null ||
+//				brevErBestilt.getBrevbestillingRequest().getBrevKode() == null) {
+//			return brevErBestilt;
+//		}
+//
+//		if (brevErBestilt.getBrevbestillingRequest().getBrevKode().contains("sometimes")) {
+//			sometimesCount++;
+//			if (sometimesCount % 4 != 0) {
+//				throw new RuntimeException("sometimes failed.");
+//			}
+//		}
+//		else if (brevErBestilt.getBrevbestillingRequest().getBrevKode().contains("error")) {
+//			throw new RuntimeException("error failed.");
+//		}
 
 		return brevErBestilt;
 	}

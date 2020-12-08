@@ -10,7 +10,7 @@
     </parent>
     <groupId>no.nav.pensjon-brev-bestilling</groupId>
     <artifactId>brevbestilling-integrasjon</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.3</version>
     <properties>
         <openapi.package>no.nav.pensjon.brev.bestilling.integrasjon</openapi.package>
         <swagger-annotations.version>2.1.4</swagger-annotations.version>
