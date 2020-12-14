@@ -35,7 +35,7 @@ spring.cloud:
                 group: prepare-brevdata-grunnlag
                 maxAttempts: 1
             brevErBestiltDlt-out-0.destination: pensjonsbrev.brev-data-grunnlag
-        kafka.default.consumer: #TODO hvordan spesifisere for kun enkelt channel?
+        kafka.default.consumer:
             enableDlq: true
             dlqName: pensjonsbrev.brev-er-bestilt-dlt
 
