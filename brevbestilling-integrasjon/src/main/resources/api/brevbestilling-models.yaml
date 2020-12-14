@@ -17,7 +17,7 @@ components:
       properties:
         meldingId:
           type: string
-        brevbestillingRequest:
+        brevbestilling:
           $ref: "#/components/schemas/brevBestilling"
         brevMetaDataene:
           $ref: '#/components/schemas/brevMetaData'

@@ -16,6 +16,7 @@
 		<module>common-lib</module>
 		<module>sts-client</module>
 		<module>embedded-kafka</module>
+		<module>joark-integrasjon</module>
 		<module>brevbestilling-integrasjon</module>
 		<module>pensjon-integrasjon</module>
 		<module>brev-bestilling-boot</module>
