@@ -17,5 +17,3 @@ sak-api:
     client:
         url: placeholder
         apikey: placeholder
-
-management.endpoints.web.exposure.include: bindings
