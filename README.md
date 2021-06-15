@@ -1,4 +1,6 @@
 # pensjon-brev-bestilling
+>⚠️ **Denne løsningen skal ikke lenger videreutvikles eller vedlikeholdes. **
+
 Mikrotjeneste som pensjon bruker for brevbestilling.
 
 ## Testing
